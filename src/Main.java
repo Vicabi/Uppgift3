@@ -59,9 +59,7 @@ public class Main extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        JButton tempButton = new JButton();
-
-        tempButton = (JButton) e.getSource();
+        JButton tempButton = (JButton) e.getSource();
 
         int temp1 = tempButton.getX();
         int temp2 = tempButton.getY();
@@ -73,6 +71,14 @@ public class Main extends JFrame implements ActionListener {
         if (jp.getComponentAt(temp1-50, temp2) == jbx) {
             jbx.setLocation(jbx.getX()+50, jbx.getY());
             jb7.setLocation(temp1-50, temp2);
+        }
+        if (jp.getComponentAt(temp1, temp2+50) == jbx) {
+            jbx.setLocation(jbx.getX(), jbx.getY()-50);
+            jb7.setLocation(temp1, temp2+50);
+        }
+        if (jp.getComponentAt(temp1, temp2-50) == jbx) {
+            jbx.setLocation(jbx.getX(), jbx.getY()+50);
+            jb7.setLocation(temp1, temp2-50);
         }
 
 
