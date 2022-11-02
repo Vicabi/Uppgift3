@@ -29,22 +29,22 @@ public class Main extends JFrame implements ActionListener {
         this.add(jp);
         jp.setLayout(null);
 
-        jb1.setBounds(0,0,50,50);
-        jb2.setBounds(50,0,50, 50);
-        jb3.setBounds(100,0,50,50);
-        jb4.setBounds(150,0,50,50);
-        jb5.setBounds(0,50,50,50);
-        jb6.setBounds(50,50,50,50);
-        jb7.setBounds(100,50,50,50);
-        jb8.setBounds(150,50,50,50);
-        jb9.setBounds(0,100,50,50);
-        jb10.setBounds(50,100,50,50);
-        jb11.setBounds(100,100,50,50);
-        jb12.setBounds(150,100,50,50);
-        jb13.setBounds(0,150,50,50);
-        jb14.setBounds(50,150,50,50);
-        jb15.setBounds(100,150,50,50);
-        jbx.setBounds(150,150,50,50);
+        jb1.setBounds(0, 0, 50, 50);
+        jb2.setBounds(50, 0, 50, 50);
+        jb3.setBounds(100, 0, 50, 50);
+        jb4.setBounds(150, 0, 50, 50);
+        jb5.setBounds(0, 50, 50, 50);
+        jb6.setBounds(50, 50, 50, 50);
+        jb7.setBounds(100, 50, 50, 50);
+        jb8.setBounds(150, 50, 50, 50);
+        jb9.setBounds(0, 100, 50, 50);
+        jb10.setBounds(50, 100, 50, 50);
+        jb11.setBounds(100, 100, 50, 50);
+        jb12.setBounds(150, 100, 50, 50);
+        jb13.setBounds(0, 150, 50, 50);
+        jb14.setBounds(50, 150, 50, 50);
+        jb15.setBounds(150, 150, 50, 50);
+        jbx.setBounds(100, 150, 50, 50);
 
         jp.add(jb1);
         jp.add(jb2);
@@ -80,7 +80,6 @@ public class Main extends JFrame implements ActionListener {
         jb15.addActionListener(this);
         jbx.addActionListener(this);
 
-
         setSize(300,300);
         setVisible(true);
         setLocationRelativeTo(null);
@@ -111,6 +110,31 @@ public class Main extends JFrame implements ActionListener {
         if (jp.getComponentAt(temp1, temp2-50) == jbx) {
             jbx.setLocation(jbx.getX(), jbx.getY()+50);
             tempButton.setLocation(temp1, temp2-50);
+        }
+
+        this.isWin(jp);
+
+    }
+
+    public void isWin (JPanel jp) {
+
+        if (jp.getComponentAt(0,0) == jb1 &&
+            jp.getComponentAt(50,0) == jb2 &&
+            jp.getComponentAt(100, 0) == jb3 &&
+            jp.getComponentAt(150, 0) == jb4 &&
+            jp.getComponentAt(0,50) == jb5 &&
+            jp.getComponentAt(50, 50) == jb6 &&
+            jp.getComponentAt(100, 50) == jb7 &&
+            jp.getComponentAt(150, 50) == jb8 &&
+            jp.getComponentAt(0, 100) == jb9 &&
+            jp.getComponentAt(50, 100) == jb10 &&
+            jp.getComponentAt(100, 100) == jb11 &&
+            jp.getComponentAt(150, 100) == jb12 &&
+            jp.getComponentAt(0, 150) == jb13 &&
+            jp.getComponentAt(50, 150) == jb14 &&
+            jp.getComponentAt(100, 150) == jb15 &&
+            jp.getComponentAt(150, 150) == jbx) {
+            JOptionPane.showMessageDialog(null, "Du har vunnit");
         }
 
 
