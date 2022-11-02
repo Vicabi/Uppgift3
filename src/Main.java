@@ -27,18 +27,29 @@ public class Main extends JFrame implements ActionListener {
     public Main () {
 
         this.add(jp);
+        jp.setLayout(null);
 
-        jp.add(jb1); jp.add(jb2); jp.add(jb3); jp.add(jb4);
-        jp.add(jb5); jp.add(jb6); jp.add(jb7); jp.add(jb8);
-        jp.add(jb9); jp.add(jb10); jp.add(jb11); jp.add(jb12);
-        jp.add(jb13); jp.add(jb14); jp.add(jb15); jp.add(jbx);
+        jb1.setBounds(0,0,50,50);
+        jb2.setBounds(50,0,50, 50);
+        jb3.setBounds(100,0,50,50);
+        jb4.setBounds(150,0,50,50);
+        jb5.setBounds(0,50,50,50);
+        jb6.setBounds(50,50,50,50);
+        jb7.setBounds(100,50,50,50);
+        jbx.setBounds(150,50,50,50);
 
+        jp.add(jb1);
+        jp.add(jb2);
+        jp.add(jb3);
+        jp.add(jb4);
+        jp.add(jb5);
+        jp.add(jb6);
+        jp.add(jb7);
+        jp.add(jbx);
 
-        jp.setLayout(new GridLayout(4, 4));
+        jb7.addActionListener(this);
 
-        jb15.addActionListener(this);
-
-        pack();
+        setSize(300,300);
         setVisible(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -48,8 +59,22 @@ public class Main extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == jb15)
-            
+        JButton tempButton = new JButton();
+
+        tempButton = (JButton) e.getSource();
+
+        int temp1 = tempButton.getX();
+        int temp2 = tempButton.getY();
+
+        if (jp.getComponentAt(temp1+50, temp2) == jbx) {
+            jbx.setLocation(jbx.getX()-50, jbx.getY());
+            jb7.setLocation(temp1+50, temp2);
+        }
+        if (jp.getComponentAt(temp1-50, temp2) == jbx) {
+            jbx.setLocation(jbx.getX()+50, jbx.getY());
+            jb7.setLocation(temp1-50, temp2);
+        }
+
 
 
     }
