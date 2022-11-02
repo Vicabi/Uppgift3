@@ -2,10 +2,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Main extends JFrame implements ActionListener {
 
     JPanel jp = new JPanel();
+
+    JPanel backpanel = new JPanel();
     JButton jb1 = new JButton("1");
     JButton jb2 = new JButton("2");
     JButton jb3 = new JButton("3");
@@ -23,11 +28,19 @@ public class Main extends JFrame implements ActionListener {
     JButton jb15 = new JButton("15");
     JButton jbx = new JButton("X");
 
+    JButton shuffleButton = new JButton("Shuffle");
+
 
     public Main () {
 
         this.add(jp);
         jp.setLayout(null);
+
+        add(backpanel);
+        backpanel.setLayout(new BorderLayout());
+        backpanel.add(jp);
+        backpanel.add(shuffleButton, BorderLayout.NORTH);
+        shuffleButton.addActionListener(this);
 
         jb1.setBounds(0, 0, 50, 50);
         jb2.setBounds(50, 0, 50, 50);
@@ -79,6 +92,7 @@ public class Main extends JFrame implements ActionListener {
         jb14.addActionListener(this);
         jb15.addActionListener(this);
         jbx.addActionListener(this);
+        shuffleButton.addActionListener(this);
 
         setSize(300,300);
         setVisible(true);
@@ -112,11 +126,16 @@ public class Main extends JFrame implements ActionListener {
             tempButton.setLocation(temp1, temp2-50);
         }
 
-        this.isWin(jp);
+        if (e.getSource() == shuffleButton) {
+            this.shuffle(jp);
+        }
+
+
+        this.isWin();
 
     }
 
-    public void isWin (JPanel jp) {
+    public void isWin () {
 
         if (jp.getComponentAt(0,0) == jb1 &&
             jp.getComponentAt(50,0) == jb2 &&
@@ -136,7 +155,24 @@ public class Main extends JFrame implements ActionListener {
             jp.getComponentAt(150, 150) == jbx) {
             JOptionPane.showMessageDialog(null, "Du har vunnit");
         }
+    }
 
+    public void shuffle (JPanel jp) {
+
+        Component buttonList[] = jp.getComponents();
+        List <Point> lista = new ArrayList<>();
+
+        for (Component i : buttonList) {
+            lista.add(i.getLocation());
+        }
+
+        Collections.shuffle(lista);
+
+        int j = 0;
+        for (Component i : buttonList){
+            i.setLocation(lista.get(j));
+            j++;
+        }
 
 
     }
