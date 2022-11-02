@@ -1,0 +1,5 @@
+1. shuffle
+2. win
+
+a0Counter <= 4 && a50Counter <= 4 && a100Counter <= 4 && a150Counter <= 4
+            && b0Counter <= 4 && b50Counter <= 4 && b100Counter <= 4 && b150Counter <= 4
