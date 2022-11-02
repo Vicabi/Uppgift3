@@ -36,7 +36,15 @@ public class Main extends JFrame implements ActionListener {
         jb5.setBounds(0,50,50,50);
         jb6.setBounds(50,50,50,50);
         jb7.setBounds(100,50,50,50);
-        jbx.setBounds(150,50,50,50);
+        jb8.setBounds(150,50,50,50);
+        jb9.setBounds(0,100,50,50);
+        jb10.setBounds(50,100,50,50);
+        jb11.setBounds(100,100,50,50);
+        jb12.setBounds(150,100,50,50);
+        jb13.setBounds(0,150,50,50);
+        jb14.setBounds(50,150,50,50);
+        jb15.setBounds(100,150,50,50);
+        jbx.setBounds(150,150,50,50);
 
         jp.add(jb1);
         jp.add(jb2);
@@ -45,9 +53,31 @@ public class Main extends JFrame implements ActionListener {
         jp.add(jb5);
         jp.add(jb6);
         jp.add(jb7);
+        jp.add(jb8);
+        jp.add(jb9);
+        jp.add(jb10);
+        jp.add(jb11);
+        jp.add(jb12);
+        jp.add(jb13);
+        jp.add(jb14);
+        jp.add(jb15);
         jp.add(jbx);
 
+        jb1.addActionListener(this);
+        jb2.addActionListener(this);
+        jb3.addActionListener(this);
+        jb5.addActionListener(this);
         jb7.addActionListener(this);
+        jb8.addActionListener(this);
+        jb9.addActionListener(this);
+        jb10.addActionListener(this);
+        jb11.addActionListener(this);
+        jb12.addActionListener(this);
+        jb13.addActionListener(this);
+        jb14.addActionListener(this);
+        jb15.addActionListener(this);
+        jbx.addActionListener(this);
+
 
         setSize(300,300);
         setVisible(true);
