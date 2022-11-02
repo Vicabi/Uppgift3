@@ -162,6 +162,7 @@ public class Main extends JFrame implements ActionListener {
         if (jp.getComponentAt(temp1, temp2 - 50) == jbx) {
             jbx.setLocation(jbx.getX(), jbx.getY() + 50);
             tempButton.setLocation(temp1, temp2 - 50);
+
         }
 
         this.isWin();

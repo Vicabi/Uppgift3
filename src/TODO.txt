@@ -94,20 +94,15 @@ a0Counter <= 4 && a50Counter <= 4 && a100Counter <= 4 && a150Counter <= 4
                         Point px = new Point(150, 150);
 
 
+                        private boolean isSolvable() {
+                          int countInversions = 0;
 
-
-
-                      private boolean isSolvable() { /*https://ssaurel.medium.com/developing-a-15-puzzle-game-of-fifteen-in-java-dfe1359cc6e3*/
-                            int countInversions = 0;
-                            int[] buttonsInt = new int[15];
-                            for (int i = 0; i < 15; i++) {
-                                buttonsInt[i] = Integer.parseInt(String.valueOf(buttons.get(i).getText()));
+                          for (int i = 0; i < nbTiles; i++) {
+                            for (int j = 0; j < i; j++) {
+                              if (tiles[j] > tiles[i])
+                                countInversions++;
                             }
-                            for (int i = 0; i < buttonsInt.length; i++) {
-                                for (int j = 0; j < i; j++) {
-                                    if (buttonsInt[j] > buttonsInt[i])
-                                        countInversions++;
-                                }
-                            }
-                            return countInversions % 2 == 0;
+                          }
+
+                          return countInversions % 2 == 0;
                         }
