@@ -66,7 +66,9 @@ public class Main extends JFrame implements ActionListener {
         jb1.addActionListener(this);
         jb2.addActionListener(this);
         jb3.addActionListener(this);
+        jb4.addActionListener(this);
         jb5.addActionListener(this);
+        jb6.addActionListener(this);
         jb7.addActionListener(this);
         jb8.addActionListener(this);
         jb9.addActionListener(this);
