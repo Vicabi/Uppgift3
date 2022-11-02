@@ -2,8 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 import java.util.List;
 
 public class Main extends JFrame implements ActionListener {
@@ -31,33 +30,51 @@ public class Main extends JFrame implements ActionListener {
     JButton shuffleButton = new JButton("Shuffle");
 
 
-    public Main () {
+    List<JButton> buttonList = new ArrayList<>();
 
-        this.add(jp);
-        jp.setLayout(null);
+
+    public Main() {
 
         add(backpanel);
         backpanel.setLayout(new BorderLayout());
         backpanel.add(jp);
+        jp.setLayout(null);
         backpanel.add(shuffleButton, BorderLayout.NORTH);
-        shuffleButton.addActionListener(this);
+        shuffleButton.addActionListener(e -> shuffle(jp));
 
         jb1.setBounds(0, 0, 50, 50);
+        buttonList.add(jb1);
         jb2.setBounds(50, 0, 50, 50);
+        buttonList.add(jb2);
         jb3.setBounds(100, 0, 50, 50);
+        buttonList.add(jb3);
         jb4.setBounds(150, 0, 50, 50);
+        buttonList.add(jb4);
         jb5.setBounds(0, 50, 50, 50);
+        buttonList.add(jb5);
         jb6.setBounds(50, 50, 50, 50);
+        buttonList.add(jb6);
         jb7.setBounds(100, 50, 50, 50);
+        buttonList.add(jb7);
         jb8.setBounds(150, 50, 50, 50);
+        buttonList.add(jb8);
         jb9.setBounds(0, 100, 50, 50);
+        buttonList.add(jb9);
         jb10.setBounds(50, 100, 50, 50);
+        buttonList.add(jb10);
         jb11.setBounds(100, 100, 50, 50);
+        buttonList.add(jb11);
         jb12.setBounds(150, 100, 50, 50);
+        buttonList.add(jb12);
         jb13.setBounds(0, 150, 50, 50);
+        buttonList.add(jb13);
         jb14.setBounds(50, 150, 50, 50);
+        buttonList.add(jb14);
         jb15.setBounds(150, 150, 50, 50);
+        buttonList.add(jb15);
         jbx.setBounds(100, 150, 50, 50);
+        buttonList.add(jbx);
+
 
         jp.add(jb1);
         jp.add(jb2);
@@ -92,12 +109,33 @@ public class Main extends JFrame implements ActionListener {
         jb14.addActionListener(this);
         jb15.addActionListener(this);
         jbx.addActionListener(this);
-        shuffleButton.addActionListener(this);
 
-        setSize(300,300);
+
+        setSize(300, 300);
         setVisible(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+
+    }
+
+    public void shuffle(JPanel jp) {
+        Component[] buttonList = jp.getComponents();
+        List<Point> lista = new ArrayList<>();
+
+        for (Component i : buttonList) {
+            if (i != shuffleButton) {
+                lista.add(i.getLocation());
+            }
+        }
+
+        Collections.shuffle(lista);
+
+        int j = 0;
+        for (Component i : buttonList) {
+            i.setLocation(lista.get(j));
+            j++;
+        }
     }
 
 
@@ -109,76 +147,51 @@ public class Main extends JFrame implements ActionListener {
         int temp1 = tempButton.getX();
         int temp2 = tempButton.getY();
 
-        if (jp.getComponentAt(temp1+50, temp2) == jbx) {
-            jbx.setLocation(jbx.getX()-50, jbx.getY());
-            tempButton.setLocation(temp1+50, temp2);
+        if (jp.getComponentAt(temp1 + 50, temp2) == jbx) {
+            jbx.setLocation(jbx.getX() - 50, jbx.getY());
+            tempButton.setLocation(temp1 + 50, temp2);
         }
-        if (jp.getComponentAt(temp1-50, temp2) == jbx) {
-            jbx.setLocation(jbx.getX()+50, jbx.getY());
-            tempButton.setLocation(temp1-50, temp2);
+        if (jp.getComponentAt(temp1 - 50, temp2) == jbx) {
+            jbx.setLocation(jbx.getX() + 50, jbx.getY());
+            tempButton.setLocation(temp1 - 50, temp2);
         }
-        if (jp.getComponentAt(temp1, temp2+50) == jbx) {
-            jbx.setLocation(jbx.getX(), jbx.getY()-50);
-            tempButton.setLocation(temp1, temp2+50);
+        if (jp.getComponentAt(temp1, temp2 + 50) == jbx) {
+            jbx.setLocation(jbx.getX(), jbx.getY() - 50);
+            tempButton.setLocation(temp1, temp2 + 50);
         }
-        if (jp.getComponentAt(temp1, temp2-50) == jbx) {
-            jbx.setLocation(jbx.getX(), jbx.getY()+50);
-            tempButton.setLocation(temp1, temp2-50);
+        if (jp.getComponentAt(temp1, temp2 - 50) == jbx) {
+            jbx.setLocation(jbx.getX(), jbx.getY() + 50);
+            tempButton.setLocation(temp1, temp2 - 50);
         }
-
-        if (e.getSource() == shuffleButton) {
-            this.shuffle(jp);
-        }
-
 
         this.isWin();
-
     }
 
     public void isWin () {
 
         if (jp.getComponentAt(0,0) == jb1 &&
-            jp.getComponentAt(50,0) == jb2 &&
-            jp.getComponentAt(100, 0) == jb3 &&
-            jp.getComponentAt(150, 0) == jb4 &&
-            jp.getComponentAt(0,50) == jb5 &&
-            jp.getComponentAt(50, 50) == jb6 &&
-            jp.getComponentAt(100, 50) == jb7 &&
-            jp.getComponentAt(150, 50) == jb8 &&
-            jp.getComponentAt(0, 100) == jb9 &&
-            jp.getComponentAt(50, 100) == jb10 &&
-            jp.getComponentAt(100, 100) == jb11 &&
-            jp.getComponentAt(150, 100) == jb12 &&
-            jp.getComponentAt(0, 150) == jb13 &&
-            jp.getComponentAt(50, 150) == jb14 &&
-            jp.getComponentAt(100, 150) == jb15 &&
-            jp.getComponentAt(150, 150) == jbx) {
+                jp.getComponentAt(50,0) == jb2 &&
+                jp.getComponentAt(100, 0) == jb3 &&
+                jp.getComponentAt(150, 0) == jb4 &&
+                jp.getComponentAt(0,50) == jb5 &&
+                jp.getComponentAt(50, 50) == jb6 &&
+                jp.getComponentAt(100, 50) == jb7 &&
+                jp.getComponentAt(150, 50) == jb8 &&
+                jp.getComponentAt(0, 100) == jb9 &&
+                jp.getComponentAt(50, 100) == jb10 &&
+                jp.getComponentAt(100, 100) == jb11 &&
+                jp.getComponentAt(150, 100) == jb12 &&
+                jp.getComponentAt(0, 150) == jb13 &&
+                jp.getComponentAt(50, 150) == jb14 &&
+                jp.getComponentAt(100, 150) == jb15 &&
+                jp.getComponentAt(150, 150) == jbx) {
             JOptionPane.showMessageDialog(null, "Du har vunnit");
         }
     }
 
-    public void shuffle (JPanel jp) {
 
-        Component buttonList[] = jp.getComponents();
-        List <Point> lista = new ArrayList<>();
-
-        for (Component i : buttonList) {
-            lista.add(i.getLocation());
-        }
-
-        Collections.shuffle(lista);
-
-        int j = 0;
-        for (Component i : buttonList){
-            i.setLocation(lista.get(j));
-            j++;
-        }
-
-
+    public static void main(String[] args) {
+        Main main = new Main();
     }
-
-
-
-    public static void main(String[] args) {Main main = new Main();}
 
 }
