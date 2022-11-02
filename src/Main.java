@@ -25,7 +25,7 @@ public class Main extends JFrame implements ActionListener {
     JButton jb13 = new JButton("13");
     JButton jb14 = new JButton("14");
     JButton jb15 = new JButton("15");
-    JButton jbx = new JButton("0");
+    JButton jbx = new JButton("X");
 
     JButton shuffleButton = new JButton("Shuffle");
 
@@ -70,9 +70,9 @@ public class Main extends JFrame implements ActionListener {
         buttonList.add(jb13);
         jb14.setBounds(50, 150, 50, 50);
         buttonList.add(jb14);
-        jb15.setBounds(100, 150, 50, 50);
+        jb15.setBounds(150, 150, 50, 50);
         buttonList.add(jb15);
-        jbx.setBounds(150, 150, 50, 50);
+        jbx.setBounds(100, 150, 50, 50);
         buttonList.add(jbx);
 
 
@@ -163,7 +163,33 @@ public class Main extends JFrame implements ActionListener {
             jbx.setLocation(jbx.getX(), jbx.getY() + 50);
             tempButton.setLocation(temp1, temp2 - 50);
         }
+
+        this.isWin();
     }
+
+    public void isWin () {
+
+        if (jp.getComponentAt(0,0) == jb1 &&
+                jp.getComponentAt(50,0) == jb2 &&
+                jp.getComponentAt(100, 0) == jb3 &&
+                jp.getComponentAt(150, 0) == jb4 &&
+                jp.getComponentAt(0,50) == jb5 &&
+                jp.getComponentAt(50, 50) == jb6 &&
+                jp.getComponentAt(100, 50) == jb7 &&
+                jp.getComponentAt(150, 50) == jb8 &&
+                jp.getComponentAt(0, 100) == jb9 &&
+                jp.getComponentAt(50, 100) == jb10 &&
+                jp.getComponentAt(100, 100) == jb11 &&
+                jp.getComponentAt(150, 100) == jb12 &&
+                jp.getComponentAt(0, 150) == jb13 &&
+                jp.getComponentAt(50, 150) == jb14 &&
+                jp.getComponentAt(100, 150) == jb15 &&
+                jp.getComponentAt(150, 150) == jbx) {
+            JOptionPane.showMessageDialog(null, "Du har vunnit");
+        }
+    }
+
+
     public static void main(String[] args) {
         Main main = new Main();
     }
