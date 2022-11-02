@@ -2,9 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Random;
 
 public class Main extends JFrame implements ActionListener {
 
@@ -26,9 +25,10 @@ public class Main extends JFrame implements ActionListener {
     JButton jb13 = new JButton("13");
     JButton jb14 = new JButton("14");
     JButton jb15 = new JButton("15");
-    JButton jbx = new JButton("X");
+    JButton jbx = new JButton("0");
 
     JButton shuffleButton = new JButton("Shuffle");
+
 
     List<JButton> buttonList = new ArrayList<>();
 
@@ -40,7 +40,7 @@ public class Main extends JFrame implements ActionListener {
         backpanel.add(jp);
         jp.setLayout(null);
         backpanel.add(shuffleButton, BorderLayout.NORTH);
-        shuffleButton.addActionListener(this);
+        shuffleButton.addActionListener(e -> shuffle(jp));
 
         jb1.setBounds(0, 0, 50, 50);
         buttonList.add(jb1);
@@ -119,76 +119,22 @@ public class Main extends JFrame implements ActionListener {
 
     }
 
-    public void shuffleButtons(List<JButton> buttonList) {
-        int a0Counter = 0;
-        int a50Counter = 0;
-        int a100Counter = 0;
-        int a150Counter = 0;
-        int b0Counter = 0;
-        int b50Counter = 0;
-        int b100Counter = 0;
-        int b150Counter = 0;
-        int a = 0;
-        int b = 0;
-        for (JButton element : buttonList) {
-            Random random = new Random();
-             a = random.nextInt(4);
-             b = random.nextInt(4);
-             if (a == 0 && b == 0){
-                 a=0;
-                 b=0;
-                 break;
-             }
-             if (a == 1 && b == 1){
-                 a=50;
-                 b=50;
-                 break;
-             }
-             if (a == 2 && b == 2){
-                 a = 100;
-                 b= 100;
-                 break;
+    public void shuffle(JPanel jp) {
+        Component[] buttonList = jp.getComponents();
+        List<Point> lista = new ArrayList<>();
+
+        for (Component i : buttonList) {
+            if (i != shuffleButton) {
+                lista.add(i.getLocation());
             }
-            if (a == 3 && b == 3){
-                a = 150;
-                b= 150;
-                break;
-            }
-            if (a == 1) {
-                a = 50;
-                a50Counter++;
-                if (a50Counter == 4){break;}
-            } else if (a == 2) {
-                a = 100;
-                a100Counter++;
-                if (a100Counter == 4){break;}
-            } else if (a == 3) {
-                a = 150;
-                a150Counter++;
-                if (a150Counter == 4){break;}
-            } else if (a == 0){
-                a = 0;
-                a0Counter++;
-                if (a0Counter == 4){break;}
-            }
-            if (b == 1){
-                b = 50;
-                b50Counter++;
-                if (b50Counter == 4){break;}
-            } else if (b == 2) {
-                b = 100;
-                b100Counter++;
-                if (b100Counter == 4){break;}
-            } else if (b == 3) {
-                b = 150;
-                b150Counter++;
-                if (b150Counter == 4){break;}
-            } else if (b == 0) {
-                b = 0;
-                b0Counter++;
-                if (b0Counter == 4){break;}
-            }
-            element.setBounds(a, b, 50, 50);
+        }
+
+        Collections.shuffle(lista);
+
+        int j = 0;
+        for (Component i : buttonList) {
+            i.setLocation(lista.get(j));
+            j++;
         }
     }
 
@@ -217,14 +163,7 @@ public class Main extends JFrame implements ActionListener {
             jbx.setLocation(jbx.getX(), jbx.getY() + 50);
             tempButton.setLocation(temp1, temp2 - 50);
         }
-        if (tempButton == shuffleButton) {
-            shuffleButtons(buttonList);
-        }
-
-
     }
-
-
     public static void main(String[] args) {
         Main main = new Main();
     }
