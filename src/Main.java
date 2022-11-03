@@ -24,7 +24,7 @@ public class Main extends JFrame implements ActionListener {
     JButton jb13 = new JButton("13");
     JButton jb14 = new JButton("14");
     JButton jb15 = new JButton("15");
-    JButton jbx = new JButton("");
+    JButton jbx = new JButton();
 
     JButton shuffleButton = new JButton("Shuffle/New Game");
 
@@ -76,20 +76,21 @@ public class Main extends JFrame implements ActionListener {
     public void shuffle() {
 
         List<Point> lista = new ArrayList<>();
-            for (Component i : buttonList) {
-                lista.add(i.getLocation());
-            }
 
-            Collections.shuffle(lista);
+        for (Component i : buttonList) {
+            lista.add(i.getLocation());
+        }
 
-            int j = 0;
-            for (Component i : buttonList) {
-                i.setLocation(lista.get(j));
-                j++;
-            }
-            if (!isSolvable()){
-                shuffle();
-            }
+        Collections.shuffle(lista);
+
+        int j = 0;
+        for (Component i : buttonList) {
+            i.setLocation(lista.get(j));
+            j++;
+        }
+        if (!isSolvable()){
+            JOptionPane.showMessageDialog(null, "Går ej att lösa! Vänligen starta om spelet");
+        }
     }
 
 
@@ -148,10 +149,27 @@ public class Main extends JFrame implements ActionListener {
 
     //https://ssaurel.medium.com/developing-a-15-puzzle-game-of-fifteen-in-java-dfe1359cc6e3
     private boolean isSolvable() {
-        int countInversions = 0;
-        int[] buttons = new int[15];
+
+        List <JButton> temp = new ArrayList<>();
+
+
+        int x = 0;
+        int y = 0;
         for (int i = 0; i < 15; i++) {
-            buttons[i] = Integer.parseInt(String.valueOf(buttonList.get(i).getText()));
+            temp.add( (JButton) jp.getComponentAt(x, y));
+            x = x +50;
+            if (x == 200) {
+                x = 0;
+                y = y + 50;
+            }
+        }
+        temp.remove(jbx);
+
+        int countInversions = 0;
+        int[] buttons = new int[14];
+
+        for (int i = 0; i < 14; i++) {
+                buttons [i] = Integer.parseInt(temp.get(i).getText());
         }
         for (int i = 0; i < buttons.length; i++) {
             for (int j = 0; j < i; j++) {
