@@ -29,8 +29,7 @@ public class Main extends JFrame implements ActionListener {
     JButton shuffleButton = new JButton("Shuffle/New Game");
 
 
-    List<JButton> buttonList = Arrays.asList(jb1,jb2,jb3,jb4,jb5,jb6,jb7,jb8,jb9,jb10,jb11,jb12,jb13,jb14,jb15,jbx);
-
+    List<JButton> buttonList = Arrays.asList(jb1, jb2, jb3, jb4, jb5, jb6, jb7, jb8, jb9, jb10, jb11, jb12, jb13, jb14, jb15, jbx);
 
 
     public Main() {
@@ -60,7 +59,7 @@ public class Main extends JFrame implements ActionListener {
         jb15.setBounds(150, 150, 50, 50);
         jbx.setBounds(100, 150, 50, 50);
 
-        for (JButton button: buttonList){
+        for (JButton button : buttonList) {
             jp.add(button);
             button.addActionListener(this);
         }
@@ -76,18 +75,17 @@ public class Main extends JFrame implements ActionListener {
     public void shuffle() {
 
         List<Point> lista = new ArrayList<>();
+            for (Component i : buttonList) {
+                lista.add(i.getLocation());
+            }
 
-        for (Component i : buttonList) {
-            lista.add(i.getLocation());
-        }
+            Collections.shuffle(lista);
 
-        Collections.shuffle(lista);
-
-        int j = 0;
-        for (Component i : buttonList) {
-            i.setLocation(lista.get(j));
-            j++;
-        }
+            int j = 0;
+            for (Component i : buttonList) {
+                i.setLocation(lista.get(j));
+                j++;
+            }
     }
 
 
@@ -122,13 +120,13 @@ public class Main extends JFrame implements ActionListener {
         }
     }
 
-    public void isWin () {
+    public void isWin() {
 
-        if (jp.getComponentAt(0,0) == jb1 &&
-                jp.getComponentAt(50,0) == jb2 &&
+        if (jp.getComponentAt(0, 0) == jb1 &&
+                jp.getComponentAt(50, 0) == jb2 &&
                 jp.getComponentAt(100, 0) == jb3 &&
                 jp.getComponentAt(150, 0) == jb4 &&
-                jp.getComponentAt(0,50) == jb5 &&
+                jp.getComponentAt(0, 50) == jb5 &&
                 jp.getComponentAt(50, 50) == jb6 &&
                 jp.getComponentAt(100, 50) == jb7 &&
                 jp.getComponentAt(150, 50) == jb8 &&
@@ -142,6 +140,22 @@ public class Main extends JFrame implements ActionListener {
                 jp.getComponentAt(150, 150) == jbx) {
             JOptionPane.showMessageDialog(null, "Grattis, du vann!");
         }
+    }
+
+    //https://ssaurel.medium.com/developing-a-15-puzzle-game-of-fifteen-in-java-dfe1359cc6e3
+    private boolean isSolvable() {
+        int countInversions = 0;
+        int[] buttons = new int[15];
+        for (int i = 0; i < 15; i++) {
+            buttons[i] = Integer.parseInt(String.valueOf(buttonList.get(i).getText()));
+        }
+        for (int i = 0; i < buttons.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (buttons[j] > buttons[i])
+                    countInversions++;
+            }
+        }
+        return countInversions % 2 == 0;
     }
 
 
