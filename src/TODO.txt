@@ -1,97 +1,5 @@
-1. shuffle
-2. win
-
-a0Counter <= 4 && a50Counter <= 4 && a100Counter <= 4 && a150Counter <= 4
-            && b0Counter <= 4 && b50Counter <= 4 && b100Counter <= 4 && b150Counter <= 4
-
-
-            for (JButton element : buttonList) {
-                        Random random = new Random();
-                         a = random.nextInt(4);
-                         b = random.nextInt(4);
-/* if (a == 0 && b == 0){
-                 a=0;
-                 b=0;
-                 break;
-             }
-             if (a == 1 && b == 1){
-                 a=50;
-                 b=50;
-                 break;
-             }
-             if (a == 2 && b == 2){
-                 a = 100;
-                 b= 100;
-                 break;
-            }
-            if (a == 3 && b == 3){
-                a = 150;
-                b= 150;
-                break;
-            }
-            if (a == 1) {
-                a = 50;
-                a50Counter++;
-                if (a50Counter == 4){break;}
-            } else if (a == 2) {
-                a = 100;
-                a100Counter++;
-                if (a100Counter == 4){break;}
-            } else if (a == 3) {
-                a = 150;
-                a150Counter++;
-                if (a150Counter == 4){break;}
-            } else if (a == 0){
-                a = 0;
-                a0Counter++;
-                if (a0Counter == 4){break;}
-            }
-            if (b == 1){
-                b = 50;
-                b50Counter++;
-                if (b50Counter == 4){break;}
-            } else if (b == 2) {
-                b = 100;
-                b100Counter++;
-                if (b100Counter == 4){break;}
-            } else if (b == 3) {
-                b = 150;
-                b150Counter++;
-                if (b150Counter == 4){break;}
-            } else if (b == 0) {
-                b = 0;
-                b0Counter++;
-                if (b0Counter == 4){break;}
-            }*/
-
-            /*int a0Counter = 0;
-                    int a50Counter = 0;
-                    int a100Counter = 0;
-                    int a150Counter = 0;
-                    int b0Counter = 0;
-                    int b50Counter = 0;
-                    int b100Counter = 0;
-                    int b150Counter = 0;*/
-                    element.setBounds(a, b, 50, 50);
-
-                    List<Point> pointList = Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, px);
-
-                      Point p1 = new Point(0, 0);
-                        Point p2 = new Point(50, 0);
-                        Point p3 = new Point(100, 0);
-                        Point p4 = new Point(150, 0);
-                        Point p5 = new Point(0, 50);
-                        Point p6 = new Point(50, 50);
-                        Point p7 = new Point(100, 50);
-                        Point p8 = new Point(150, 50);
-                        Point p9 = new Point(0, 100);
-                        Point p10 = new Point(50, 100);
-                        Point p11 = new Point(100, 100);
-                        Point p12 = new Point(150, 100);
-                        Point p13 = new Point(0, 150);
-                        Point p14 = new Point(50, 150);
-                        Point p15 = new Point(100, 150);
-                        Point px = new Point(150, 150);
+1. clean up code
+2. visually improve program
 
 
                         private boolean isSolvable() {
@@ -108,3 +16,5 @@ a0Counter <= 4 && a50Counter <= 4 && a100Counter <= 4 && a150Counter <= 4
                         }
 
                         https://ssaurel.medium.com/developing-a-15-puzzle-game-of-fifteen-in-java-dfe1359cc6e3
+
+

@@ -8,7 +8,6 @@ import java.util.List;
 public class Main extends JFrame implements ActionListener {
 
     JPanel jp = new JPanel();
-
     JPanel backpanel = new JPanel();
     JButton jb1 = new JButton("1");
     JButton jb2 = new JButton("2");
@@ -25,12 +24,13 @@ public class Main extends JFrame implements ActionListener {
     JButton jb13 = new JButton("13");
     JButton jb14 = new JButton("14");
     JButton jb15 = new JButton("15");
-    JButton jbx = new JButton("X");
+    JButton jbx = new JButton("");
 
-    JButton shuffleButton = new JButton("Shuffle");
+    JButton shuffleButton = new JButton("Shuffle/New Game");
 
 
-    List<JButton> buttonList = new ArrayList<>();
+    List<JButton> buttonList = Arrays.asList(jb1,jb2,jb3,jb4,jb5,jb6,jb7,jb8,jb9,jb10,jb11,jb12,jb13,jb14,jb15,jbx);
+
 
 
     public Main() {
@@ -41,77 +41,31 @@ public class Main extends JFrame implements ActionListener {
         jp.setLayout(null);
         backpanel.add(shuffleButton, BorderLayout.NORTH);
         shuffleButton.addActionListener(e -> shuffle(jp));
+        jbx.setBackground(Color.WHITE);
 
         jb1.setBounds(0, 0, 50, 50);
-        buttonList.add(jb1);
         jb2.setBounds(50, 0, 50, 50);
-        buttonList.add(jb2);
         jb3.setBounds(100, 0, 50, 50);
-        buttonList.add(jb3);
         jb4.setBounds(150, 0, 50, 50);
-        buttonList.add(jb4);
         jb5.setBounds(0, 50, 50, 50);
-        buttonList.add(jb5);
         jb6.setBounds(50, 50, 50, 50);
-        buttonList.add(jb6);
         jb7.setBounds(100, 50, 50, 50);
-        buttonList.add(jb7);
         jb8.setBounds(150, 50, 50, 50);
-        buttonList.add(jb8);
         jb9.setBounds(0, 100, 50, 50);
-        buttonList.add(jb9);
         jb10.setBounds(50, 100, 50, 50);
-        buttonList.add(jb10);
         jb11.setBounds(100, 100, 50, 50);
-        buttonList.add(jb11);
         jb12.setBounds(150, 100, 50, 50);
-        buttonList.add(jb12);
         jb13.setBounds(0, 150, 50, 50);
-        buttonList.add(jb13);
         jb14.setBounds(50, 150, 50, 50);
-        buttonList.add(jb14);
         jb15.setBounds(150, 150, 50, 50);
-        buttonList.add(jb15);
         jbx.setBounds(100, 150, 50, 50);
-        buttonList.add(jbx);
 
+        for (JButton button: buttonList){
+            jp.add(button);
+            button.addActionListener(this);
+        }
 
-        jp.add(jb1);
-        jp.add(jb2);
-        jp.add(jb3);
-        jp.add(jb4);
-        jp.add(jb5);
-        jp.add(jb6);
-        jp.add(jb7);
-        jp.add(jb8);
-        jp.add(jb9);
-        jp.add(jb10);
-        jp.add(jb11);
-        jp.add(jb12);
-        jp.add(jb13);
-        jp.add(jb14);
-        jp.add(jb15);
-        jp.add(jbx);
-
-        jb1.addActionListener(this);
-        jb2.addActionListener(this);
-        jb3.addActionListener(this);
-        jb4.addActionListener(this);
-        jb5.addActionListener(this);
-        jb6.addActionListener(this);
-        jb7.addActionListener(this);
-        jb8.addActionListener(this);
-        jb9.addActionListener(this);
-        jb10.addActionListener(this);
-        jb11.addActionListener(this);
-        jb12.addActionListener(this);
-        jb13.addActionListener(this);
-        jb14.addActionListener(this);
-        jb15.addActionListener(this);
-        jbx.addActionListener(this);
-
-
-        setSize(300, 300);
+        setSize(215, 265);
         setVisible(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
