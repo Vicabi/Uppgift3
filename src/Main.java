@@ -42,6 +42,7 @@ public class Main extends JFrame implements ActionListener {
         shuffleButton.addActionListener(e -> shuffle());
         jbx.setBackground(Color.WHITE);
 
+        //placerar ut alla knappar
         jb1.setBounds(0, 0, 50, 50);
         jb2.setBounds(50, 0, 50, 50);
         jb3.setBounds(100, 0, 50, 50);
@@ -59,7 +60,7 @@ public class Main extends JFrame implements ActionListener {
         jb15.setBounds(150, 150, 50, 50);
         jbx.setBounds(100, 150, 50, 50);
 
-        for (JButton button : buttonList) {
+        for (JButton button : buttonList) { // lägger till knapparna i panel och lägger till actionListners
             jp.add(button);
             button.setFont(new Font("Impact", Font.PLAIN,16));
             button.addActionListener(this);
@@ -73,22 +74,22 @@ public class Main extends JFrame implements ActionListener {
 
     }
 
-    public void shuffle() { //
+    public void shuffle() {
 
         List<Point> lista = new ArrayList<>();
 
-        for (Component i : buttonList) {
+        for (Component i : buttonList) { // lägger till en lista av postioner
             lista.add(i.getLocation());
         }
 
         Collections.shuffle(lista);
 
         int j = 0;
-        for (Component i : buttonList) {
+        for (Component i : buttonList) { //sätter nya positioner baserat på hur de var omkastade i listan lista
             i.setLocation(lista.get(j));
             j++;
         }
-        if (!isSolvable()){
+        if (!isSolvable()){ // kollar om positionen går att lösa annars shufflar den tills det går
             //JOptionPane.showMessageDialog(null, "Går ej att lösa! Vänligen starta om spelet");
             shuffle();
         }
@@ -103,22 +104,22 @@ public class Main extends JFrame implements ActionListener {
         int temp1 = tempButton.getX();
         int temp2 = tempButton.getY();
 
-        if (jp.getComponentAt(temp1 + 50, temp2) == jbx) {
+        if (jp.getComponentAt(temp1 + 50, temp2) == jbx) { //kollar om den x är till höger if(true) byter plats
             jbx.setLocation(jbx.getX() - 50, jbx.getY());
             tempButton.setLocation(temp1 + 50, temp2);
             isWin();
         }
-        if (jp.getComponentAt(temp1 - 50, temp2) == jbx) {
+        if (jp.getComponentAt(temp1 - 50, temp2) == jbx) {  //kollar om den x är till vänster if(true) byter plats
             jbx.setLocation(jbx.getX() + 50, jbx.getY());
             tempButton.setLocation(temp1 - 50, temp2);
             isWin();
         }
-        if (jp.getComponentAt(temp1, temp2 + 50) == jbx) {
+        if (jp.getComponentAt(temp1, temp2 + 50) == jbx) {  //kollar om den x är till ner if(true) byter plats
             jbx.setLocation(jbx.getX(), jbx.getY() - 50);
             tempButton.setLocation(temp1, temp2 + 50);
             isWin();
         }
-        if (jp.getComponentAt(temp1, temp2 - 50) == jbx) {
+        if (jp.getComponentAt(temp1, temp2 - 50) == jbx) {  //kollar om den x är till upp if(true) byter plats
             jbx.setLocation(jbx.getX(), jbx.getY() + 50);
             tempButton.setLocation(temp1, temp2 - 50);
             isWin();
@@ -126,7 +127,7 @@ public class Main extends JFrame implements ActionListener {
         }
     }
 
-    public void isWin() {
+    public void isWin() { // kollar att varje knapp är i den position den ska vara för att vinna
 
         if (jp.getComponentAt(0, 0) == jb1 &&
                 jp.getComponentAt(50, 0) == jb2 &&
@@ -149,7 +150,7 @@ public class Main extends JFrame implements ActionListener {
     }
 
     //https://ssaurel.medium.com/developing-a-15-puzzle-game-of-fifteen-in-java-dfe1359cc6e3
-    private boolean isSolvable() {
+    private boolean isSolvable() {  // tog från länken ovan och modifierade för att fungera i vårt program
 
         List <JButton> temp = new ArrayList<>();
 
