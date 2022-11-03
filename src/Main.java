@@ -40,7 +40,7 @@ public class Main extends JFrame implements ActionListener {
         backpanel.add(jp);
         jp.setLayout(null);
         backpanel.add(shuffleButton, BorderLayout.NORTH);
-        shuffleButton.addActionListener(e -> shuffle(jp));
+        shuffleButton.addActionListener(e -> shuffle());
         jbx.setBackground(Color.WHITE);
 
         jb1.setBounds(0, 0, 50, 50);
@@ -73,14 +73,12 @@ public class Main extends JFrame implements ActionListener {
 
     }
 
-    public void shuffle(JPanel jp) {
-        Component[] buttonList = jp.getComponents();
+    public void shuffle() {
+
         List<Point> lista = new ArrayList<>();
 
         for (Component i : buttonList) {
-            if (i != shuffleButton) {
-                lista.add(i.getLocation());
-            }
+            lista.add(i.getLocation());
         }
 
         Collections.shuffle(lista);
@@ -142,7 +140,7 @@ public class Main extends JFrame implements ActionListener {
                 jp.getComponentAt(50, 150) == jb14 &&
                 jp.getComponentAt(100, 150) == jb15 &&
                 jp.getComponentAt(150, 150) == jbx) {
-            JOptionPane.showMessageDialog(null, "Du har vunnit");
+            JOptionPane.showMessageDialog(null, "Grattis, du vann!");
         }
     }
 
