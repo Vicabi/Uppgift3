@@ -61,6 +61,7 @@ public class Main extends JFrame implements ActionListener {
 
         for (JButton button : buttonList) {
             jp.add(button);
+            button.setFont(new Font("Impact", Font.PLAIN,16));
             button.addActionListener(this);
         }
 
@@ -85,6 +86,9 @@ public class Main extends JFrame implements ActionListener {
             for (Component i : buttonList) {
                 i.setLocation(lista.get(j));
                 j++;
+            }
+            if (!isSolvable()){
+                shuffle();
             }
     }
 
