@@ -73,7 +73,7 @@ public class Main extends JFrame implements ActionListener {
 
     }
 
-    public void shuffle() {
+    public void shuffle() { //
 
         List<Point> lista = new ArrayList<>();
 
@@ -89,7 +89,8 @@ public class Main extends JFrame implements ActionListener {
             j++;
         }
         if (!isSolvable()){
-            JOptionPane.showMessageDialog(null, "Går ej att lösa! Vänligen starta om spelet");
+            //JOptionPane.showMessageDialog(null, "Går ej att lösa! Vänligen starta om spelet");
+            shuffle();
         }
     }
 
