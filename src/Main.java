@@ -43,22 +43,16 @@ public class Main extends JFrame implements ActionListener {
         jbx.setBackground(Color.WHITE);
 
         //placerar ut alla knappar
-        jb1.setBounds(0, 0, 50, 50);
-        jb2.setBounds(50, 0, 50, 50);
-        jb3.setBounds(100, 0, 50, 50);
-        jb4.setBounds(150, 0, 50, 50);
-        jb5.setBounds(0, 50, 50, 50);
-        jb6.setBounds(50, 50, 50, 50);
-        jb7.setBounds(100, 50, 50, 50);
-        jb8.setBounds(150, 50, 50, 50);
-        jb9.setBounds(0, 100, 50, 50);
-        jb10.setBounds(50, 100, 50, 50);
-        jb11.setBounds(100, 100, 50, 50);
-        jb12.setBounds(150, 100, 50, 50);
-        jb13.setBounds(0, 150, 50, 50);
-        jb14.setBounds(50, 150, 50, 50);
-        jb15.setBounds(150, 150, 50, 50);
-        jbx.setBounds(100, 150, 50, 50);
+        int x = 0;
+        int y = 0;
+        for (JButton button : buttonList) {
+            button.setBounds(x, y, 50, 50);
+            x = x +50;
+            if (x == 200) {
+                x = 0;
+                y = y + 50;
+            }
+        }
 
         for (JButton button : buttonList) { // lägger till knapparna i panel och lägger till actionListners
             jp.add(button);
